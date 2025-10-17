@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio — Ranbir Mishra</title>
+  <meta name="description" content="Professional portfolio of Alex Doe — Full-stack Web Developer" />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  <style>
+    :root {
+      --bg: #0a0e27;
+      --card: #111b3a;
+      --muted: #8892b0;
+      --accent: #64ffda;
+      --accent-dark: #7c3aed;
+      --glass: rgba(255, 255, 255, 0.05);
+      --gradient: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+      --radius: 12px;
+      --max-width: 1200px;
+      --container-padding: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+      background: radial-gradient(1400px 600px at 10% 10%, rgba(124, 58, 237, 0.06), transparent 8%),
+                  radial-gradient(1000px 500px at 90% 90%, rgba(6, 182, 212, 0.04), transparent 6%),
+                  var(--bg);
+      color: #e6eef8;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+    }
+
+    /* Layout */
+    .wrap {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: var(--container-padding);
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      position: sticky;
+      top: 0;
+      background: rgba(10, 14, 39, 0.7);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .brand-text h1 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-text p {
+      margin: 2px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+      background: rgba(100, 255, 218, 0.05);
+    }
+
+    .header-right {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(124, 58, 237, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(100, 255, 218, 0.2);
+      color: var(--accent);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(100, 255, 218, 0.05);
+      border-color: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 60px;
+      align-items: center;
+      margin: 60px 0 80px;
+    }
+
+    .hero-content h1 {
+      font-size: 56px;
+      margin: 0 0 12px;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #e6eef8 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -1px;
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      color: var(--muted);
+      margin: 0 0 24px;
+      line-height: 1.6;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .tech-stack {
+      margin-top: 28px;
+    }
+
+    .tech-stack-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .tech {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      background: rgba(255, 255, 255, 0.06);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      border: 1px solid rgba(100, 255, 218, 0.1);
+      color: var(--accent);
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .pill:hover {
+      background: rgba(100, 255, 218, 0.1);
+      border-color: var(--accent);
+    }
+
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .profile img {
+      width: 280px;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 2px solid rgba(100, 255, 218, 0.2);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .profile-info {
+      text-align: center;
+      width: 100%;
+    }
+
+    .profile-info h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .profile-info p {
+      margin: 4px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .social-links a, .social-links button {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+      border: 1px solid rgba(100, 255, 218, 0.2);
+      padding: 8px 12px;
+      border-radius: 6px;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .social-links a:hover, .social-links button:hover {
+      background: rgba(100, 255, 218, 0.1);
+      border-color: var(--accent);
+    }
+
+    /* Sections */
+    section {
+      margin: 80px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .section-head .muted {
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 24px;
+      border-radius: 12px;
+      transition: all 0.3s;
+    }
+
+    .card:hover {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+      border-color: rgba(100, 255, 218, 0.2);
+      transform: translateY(-4px);
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .card h4 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .tag {
+      font-size: 11px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .proj-title {
+      font-weight: 700;
+      margin: 12px 0 8px;
+      font-size: 18px;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .card-footer-links {
+      display: flex;
+      gap: 8px;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #7c3aed, #06b6d4);
+      border-radius: 4px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 16px 0 16px 20px;
+      margin-bottom: 16px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -14px;
+      top: 20px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid #7c3aed;
+    }
+
+    .timeline-item strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item .muted {
+      font-size: 14px;
+    }
+
+    /* Contact Form */
+    form {
+      display: grid;
+      gap: 12px;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #e6eef8;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    input, textarea, select {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 12px;
+      border-radius: 8px;
+      color: inherit;
+      font-size: 14px;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.06);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .form-group {
+      display: grid;
+      gap: 4px;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    #formMsg {
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 12px;
+      font-size: 14px;
+      background: rgba(100, 255, 218, 0.1);
+      border: 1px solid rgba(100, 255, 218, 0.2);
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 100px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: rgba(10, 14, 39, 0.8);
+      backdrop-filter: blur(5px);
+      padding: 20px;
+      z-index: 1000;
+    }
+
+    .modal-card {
+      max-width: 600px;
+      width: 100%;
+      border-radius: 12px;
+      padding: 32px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .modal-close {
+      float: right;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 24px;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+    }
+
+    .hidden { display: none !important; }
+    .muted { color: var(--muted); }
+    .center { text-align: center; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin: 40px 0 60px;
+      }
+
+      .profile img {
+        width: 240px;
+        height: 280px;
+      }
+
+      header {
+        flex-wrap: wrap;
+      }
+
+      nav { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        padding: 16px;
+      }
+
+      h1 { font-size: 40px !important; }
+      h2 { font-size: 24px !important; }
+
+      .hero-content h1 {
+        font-size: 36px;
+      }
+
+      .hero-content p {
+        font-size: 16px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .modal-card {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="#home">
+        <div class="logo">RM</div>
+        <div class="brand-text">
+          <h1>Ranbir Mishra</h1>
+          <p>Full-stack Developer</p>
+        </div>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="header-right">
+        <a class="btn btn-secondary" id="resumeBtn" href="./RANBIR MISHRA_20250825_171938_0000.pdf" download>Resume</a>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1 id="heroName">MCA Student & Aspiring Software Developer</h1>
+        <p id="heroTag">MCA student with strong skills in Java, Python, SQL, and Web Development, with hands-on experience in building and deploying small-scale applications through academic projects. Passionate about solving real-world problems and contributing to impactful software solutions.</p>
+
+        <div class="hero-cta">
+          <a class="btn" href="#projects">View My Work</a>
+          <a class="btn btn-secondary" id="contactMe"  href="#contact">Get In Touch</a>
+        </div>
+
+        <div class="tech-stack">
+          <div class="tech-stack-label">Tech Stack</div>
+          <div class="tech">
+            <span class="pill">Java</span>
+            <span class="pill">Python</span>
+            <span class="pill">C</span>
+            <span class="pill">HTML</span>
+            <span class="pill">CSS</span>
+            <span class="pill">JavaScript</span>
+            <span class="pill">PHP</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="profile">
+        <img id="profileImage" src="img.jpg" alt="Profile">
+        <div class="profile-info">
+          <h3 id="profileName">Ranbir Mishra</h3>
+          <p>Based in Panikoili, Jajpur, Odisha</p>
+          <div class="social-links">
+            <a id="githubLink" href="https://github.com/ranbirmishra2004">
+              GitHub</a>
+            <a id="linkedinLink" href="https://www.linkedin.com/in/ranbir-mishra-b5794a294">LinkedIn</a>
+            <a id="copyEmail" href="mailto:ranbirmishra2004@gmail.com">Send Email</a>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-head">
+        <h2>About</h2>
+      </div>
+      <div class="grid" style="grid-template-columns: 2fr 1fr;">
+        <div class="card">
+          <h3>Who I Am</h3>
+          <p id="aboutText">MCA student with strong skills in Java, Python, SQL, and Web Development, with hands-on experience in building and deploying small-scale applications through academic projects such as a Hospital Management System and Real Estate Website. Proficient in Object-Oriented Programming (OOP), Data Structures and Algorithms, and Database Management Systems (DBMS). Skilled in problem-solving, software design, and debugging and data analytics tools like Power BI and Excel.Passionate about applying technical expertise to solve real-world problems, continuously learning, and contributing to impactful software solutions.</p>
+          <div style="margin-top: 16px; display: flex; gap: 8px;">
+            <button class="pill" id="contactMe2" style="cursor: pointer;">Let's Talk</button>
+            <a href="#projects" class="pill">See Work</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Quick Facts</h3>
+          <p><strong>Education:</strong> MCA (2024-Present)</p>
+          <p><strong>Availability:</strong> Open to opportunities</p>
+          <p><strong>Location:</strong> Sagar, Madhya Pradesh</p>
+          <p><strong>Focus:</strong> Web Development & Data Analytics</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-head">
+        <h2>Skills & Expertise</h2>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h4>Programming</h4>
+          <p>Java, Python, C</p>
+        </div>
+        <div class="card">
+          <h4>Web Development</h4>
+          <p>HTML, CSS, JavaScript, PHP</p>
+        </div>
+        <div class="card">
+          <h4>Database & Analytics</h4>
+          <p>SQL, Excel, Power BI</p>
+        </div>
+        <div class="card">
+          <h4>Tools & Platforms</h4>
+          <p>GitHub, Visual Studio Code, NetBeans, MySQL Workbench</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-head">
+        <h2>Featured Projects</h2>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <span class="tag">Academic Project</span>
+          <h3 class="proj-title">Hospital Management System</h3>
+          <p>A web-based application to manage patient records, doctor appointments, and billing. Designed role-based access for Admin, Doctor, Receptionist, and Patient.</p>
+          <div class="tech" style="margin-top: 12px;">
+            <span class="pill">HTML</span>
+            <span class="pill">CSS</span>
+            <span class="pill">PHP</span>
+            <span class="pill">JavaScript</span>
+            <span class="pill">SQL</span>
+          </div>
+          <div class="card-footer">
+            <span class="muted">Graduation Project</span>
+            <div class="card-footer-links">
+              <button class="pill" onclick="openProject(event,'Hospital Management System','A web-based application to manage patient records, doctor appointments, and billing. Designed role-based access for Admin, Doctor, Receptionist, and Patient.')">Details</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="tag">Academic Project</span>
+          <h3 class="proj-title">Real Estate Website Design</h3>
+          <p>Designed and developed a dynamic real estate website for property listing, searching, and user interaction. Integrated modules for User Registration, Property Listing, Search/Filter, Contact Form, and Admin Panel.</p>
+          <div class="tech" style="margin-top: 12px;">
+            <span class="pill">HTML</span>
+            <span class="pill">CSS</span>
+            <span class="pill">JavaScript</span>
+            <span class="pill">PHP</span>
+            <span class="pill">SQL</span>
+          </div>
+          <div class="card-footer">
+            <span class="muted">MCA Project</span>
+            <div class="card-footer-links">
+              <button class="pill" onclick="openProject(event,'Real Estate Website Design','Designed and developed a dynamic real estate website for property listing, searching, and user interaction. Integrated modules for User Registration, Property Listing, Search/Filter, Contact Form, and Admin Panel.')">Details</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-head">
+        <h2>Education</h2>
+      </div>
+      <div class="timeline" style="margin-top: 20px;">
+        <div class="timeline-item">
+          <strong>2024 — Present</strong>
+          <p class="muted">Master of Computer Applications (MCA) at Dr. Harisingh Gour Central University, Sagar, Madhya Pradesh</p>
+        </div>
+        <div class="timeline-item">
+          <strong>2021 — 2024</strong>
+          <p class="muted">Bachelor of Science in Computer Science at Utkal University, Bhubaneswar, Odisha</p>
+        </div>
+        <div class="timeline-item">
+          <strong>2019 — 2021</strong>
+          <p class="muted">Higher Secondary (+2 Science) at Fakir Mohan Higher Secondary school, Balasore, Odisha</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-head">
+        <h2>Get In Touch</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 28px; margin-top: 20px; align-items: start;">
+        <div class="card">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="cname">Name</label>
+              <input id="cname" type="text" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="cemail">Email</label>
+              <input id="cemail" type="email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="cmsg">Message</label>
+              <textarea id="cmsg" rows="5" placeholder="Tell me about your project..." required></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn">Send Message</button>
+              <button type="button" id="clearForm" class="btn btn-secondary">Clear</button>
+            </div>
+            <div id="formMsg"></div>
+          </form>
+        </div>
+
+        <div>
+          <div class="card">
+            <h3>Contact Info</h3>
+            <p><strong>Email</strong></p>
+            <p class="muted" id="emailDisplay">ranbirmishra2004@gmail.com</p>
+            <p style="margin-top: 16px;"><strong>Phone</strong></p>
+            <p class="muted">+91 7205873191</p>
+            <p style="margin-top: 16px;"><strong>Location</strong></p>
+            <p class="muted">Panikoili, Jajpur, Odisha</p>
+          </div>
+          <div class="card" style="margin-top: 16px;">
+            <h3>Availability</h3>
+            <p class="muted">Open to remote and hybrid positions. Available for freelance or full-time opportunities.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="footerYear"></span> Ranbir Mishra. All rights reserved.</div>
+      <div><a href="https://github.com/ranbirmishra2004">GitHub</a> • <a href="https://www.linkedin.com/in/ranbir-mishra-b5794a294">LinkedIn</a></div>
+    </footer>
+  </div>
+
+  <!-- Project Modal -->
+  <div id="projModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="modal-close" id="closeModal" aria-label="Close modal">✕</button>
+      <h3 id="modalTitle" style="margin-top: 0;">Project Details</h3>
+      <p id="modalDesc" class="muted" style="margin-bottom: 20px;">Project description goes here.</p>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <a id="modalLive" class="btn" href="#">View Live</a>
+        <a id="modalRepo" class="pill" href="#">View Code</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const DATA = {
+      name: 'Ranbir Mishra',
+      tagline: 'MCA student | Aspiring Software Developer | Exploring Web Development, Data Science & AI | Building projects that solve real-world problems.',
+      bio: "MCA student with strong skills in Java, Python, SQL, and Web Development, with hands-on experience in building and deploying small-scale applications through academic projects such as a Hospital Management System and Real Estate Website. Proficient in Object-Oriented Programming (OOP), Data Structures and Algorithms, and Database Management Systems (DBMS). Skilled in problem-solving, software design, and debugging and data analytics tools like Power BI and Excel.Passionate about applying technical expertise to solve real-world problems, continuously learning, and contributing to impactful software solutions.",
+      profileImage: 'img.jpg',
+      email: 'ranbirmishra2004@gmail.com',
+      github: 'https://github.com/ranbirmishra2004',
+      linkedin: 'https://www.linkedin.com/in/ranbir-mishra-b5794a294',
+      resume: 'RANBIR MISHRA_20250825_171938_0000.pdf',
+    };
+
+    // Apply data
+    document.getElementById('profileImage').src = DATA.profileImage;
+    document.getElementById('heroTag').textContent = DATA.tagline;
+    document.getElementById('aboutText').textContent = DATA.bio;
+    document.getElementById('profileName').textContent = DATA.name;
+    document.getElementById('emailDisplay').textContent = DATA.email;
+    document.getElementById('githubLink').href = DATA.github;
+    document.getElementById('linkedinLink').href = DATA.linkedin;
+    document.getElementById('resumeBtn').href = DATA.resume;
+    document.querySelector('.brand-text h1').textContent = DATA.name;
+    document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+    // Modal functions
+    function openProject(e, title, desc) {
+      e.stopPropagation();
+      document.getElementById('projModal').classList.remove('hidden');
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalDesc').textContent = desc;
+    }
+
+    document.getElementById('closeModal').addEventListener('click', () => {
+      document.getElementById('projModal').classList.add('hidden');
+    });
+
+    document.getElementById('projModal').addEventListener('click', (ev) => {
+      if (ev.target === document.getElementById('projModal')) {
+        document.getElementById('projModal').classList.add('hidden');
+      }
+    });
+
+    // Contact form
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      const name = document.getElementById('cname').value.trim();
+      const email = document.getElementById('cemail').value.trim();
+      const msg = document.getElementById('cmsg').value.trim();
+      
+      if (!name || !email || !msg) {
+        document.getElementById('formMsg').textContent = 'Please fill in all fields.';
+        return;
+      }
+
+      document.getElementById('formMsg').textContent = "✓ Message received! I'll get back to you soon.";
+      form.reset();
+      setTimeout(() => {
+        document.getElementById('formMsg').textContent = '';
+      }, 5000);
+    });
+
+    document.getElementById('clearForm').addEventListener('click', () => {
+      form.reset();
+      document.getElementById('formMsg').textContent = '';
+    });
+
+    // Copy email
+    document.getElementById('copyEmail').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(DATA.email);
+        const btn = document.getElementById('copyEmail');
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = orig; }, 2000);
+      } catch (e) {
+        alert('Could not copy email.');
+      }
+    });
+
+    // Contact button scroll
+    document.getElementById('contactMe').addEventListener('click', () => {
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.getElementById('contactMe2').addEventListener('click', () => {
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Smooth scroll for nav
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        if (href.startsWith('#') && href !== '#') {
+          e.preventDefault();
+          const el = document.querySelector(href);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Close modal on Escape
+    document.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Escape') {
+        document.getElementById('projModal').classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
