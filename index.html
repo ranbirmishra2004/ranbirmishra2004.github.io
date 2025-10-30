@@ -575,6 +575,44 @@
         padding: 24px;
       }
     }
+
+    /* Small enhancements: menu toggle, reveal animations, project thumbnails, skill bars */
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.06);
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .proj-thumb {
+      width: 100%;
+      height: 160px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(124,58,237,0.18), rgba(6,182,212,0.12));
+      display: grid;
+      place-items: center;
+      color: rgba(255,255,255,0.9);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .skill-list { display: grid; gap: 12px; }
+    .skill { font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; align-items: center; }
+    .skill-bar { height: 10px; background: rgba(255,255,255,0.04); border-radius: 999px; overflow: hidden; margin-top: 6px; }
+    .skill-fill { height: 100%; background: linear-gradient(90deg,var(--accent) 0%, #7c3aed 100%); width: 0%; transition: width 900ms cubic-bezier(.2,.9,.2,1); }
+
+    .reveal { opacity: 1; transform: translateY(0); transition: all 600ms cubic-bezier(.2,.9,.2,1); }
+    .hidden-reveal { opacity: 0; transform: translateY(16px); }
+
+    @media (max-width: 1024px) {
+      .menu-toggle { display: inline-block; }
+      nav { display: none; }
+      header.nav-open nav { display: flex; flex-direction: column; gap: 8px; width: 100%; margin-top: 12px; }
+    }
   </style>
 </head>
 <body>
@@ -593,8 +631,9 @@
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
       </nav>
+      <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu">☰</button>
       <div class="header-right">
-        <a class="btn btn-secondary" id="resumeBtn" href="./RANBIR MISHRA_20250825_171938_0000.pdf" download>Resume</a>
+        <a class="btn btn-secondary" id="resumeBtn" href="./RANBIR_MISHRA.pdf" download>Resume</a>
       </div>
     </header>
 
@@ -684,6 +723,27 @@
           <h4>Tools & Platforms</h4>
           <p>GitHub, Visual Studio Code, NetBeans, MySQL Workbench</p>
         </div>
+        <div class="card hidden-reveal">
+          <h4>Skill Levels</h4>
+          <div class="skill-list">
+            <div>
+              <div class="skill">Java <span>85%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-percent="85"></div></div>
+            </div>
+            <div>
+              <div class="skill">Python <span>78%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-percent="78"></div></div>
+            </div>
+            <div>
+              <div class="skill">HTML/CSS <span>88%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-percent="88"></div></div>
+            </div>
+            <div>
+              <div class="skill">SQL <span>72%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-percent="72"></div></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -694,7 +754,8 @@
       </div>
 
       <div class="grid">
-        <article class="card">
+        <article class="card hidden-reveal">
+          <div class="proj-thumb">Hospital Management</div>
           <span class="tag">Academic Project</span>
           <h3 class="proj-title">Hospital Management System</h3>
           <p>A web-based application to manage patient records, doctor appointments, and billing. Designed role-based access for Admin, Doctor, Receptionist, and Patient.</p>
@@ -713,7 +774,8 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card hidden-reveal">
+          <div class="proj-thumb">Real Estate</div>
           <span class="tag">Academic Project</span>
           <h3 class="proj-title">Real Estate Website Design</h3>
           <p>Designed and developed a dynamic real estate website for property listing, searching, and user interaction. Integrated modules for User Registration, Property Listing, Search/Filter, Contact Form, and Admin Panel.</p>
@@ -830,7 +892,7 @@
       email: 'ranbirmishra2004@gmail.com',
       github: 'https://github.com/ranbirmishra2004',
       linkedin: 'https://www.linkedin.com/in/ranbir-mishra-b5794a294',
-      resume: 'RANBIR MISHRA_20250825_171938_0000.pdf',
+      resume: 'RANBIR_MISHRA.pdf',
     };
 
     // Apply data
@@ -928,7 +990,39 @@
         document.getElementById('projModal').classList.add('hidden');
       }
     });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    menuToggle && menuToggle.addEventListener('click', () => {
+      document.querySelector('header').classList.toggle('nav-open');
+    });
+
+    // Reveal on scroll using IntersectionObserver
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal');
+          entry.target.classList.remove('hidden-reveal');
+          // animate skill bars when skills card revealed
+          entry.target.querySelectorAll && entry.target.querySelectorAll('.skill-fill').forEach(el => {
+            const pct = el.getAttribute('data-percent') || '0';
+            el.style.width = pct + '%';
+          });
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    // Add hidden-reveal class to card-like elements and observe them
+    document.querySelectorAll('.card, .hero, .profile, .timeline-item, .proj-thumb, .section-head').forEach(el => {
+      if (!el.classList.contains('hidden-reveal')) el.classList.add('hidden-reveal');
+      io.observe(el);
+    });
+
+    // Small accessibility: focus outlines for keyboard users
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Tab') document.body.classList.add('show-focus');
+    });
   </script>
 </body>
-
 </html>
