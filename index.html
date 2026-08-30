@@ -1,0 +1,1273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ranbir Mishra — SOC Analyst &amp; Linux Systems Engineer</title>
+  <meta name="description" content="Portfolio of Ranbir Mishra — MCA graduate specializing in Cybersecurity, SOC Operations, Linux Administration and Full-Stack Development." />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0e27;
+      --card: #111b3a;
+      --muted: #8892b0;
+      --accent: #64ffda;
+      --accent-dark: #7c3aed;
+      --glass: rgba(255, 255, 255, 0.05);
+      --gradient: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+      --radius: 12px;
+      --max-width: 1200px;
+      --container-padding: 24px;
+      --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+      --term-green: #39ff88;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background: radial-gradient(1400px 600px at 10% 10%, rgba(124, 58, 237, 0.06), transparent 8%),
+                  radial-gradient(1000px 500px at 90% 90%, rgba(6, 182, 212, 0.04), transparent 6%),
+                  var(--bg);
+      color: #e6eef8;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+    }
+
+    /* Layout */
+    .wrap {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: var(--container-padding);
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      position: sticky;
+      top: 0;
+      background: rgba(10, 14, 39, 0.7);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .brand-text h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-text p {
+      margin: 2px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+      background: rgba(100, 255, 218, 0.05);
+    }
+
+    .header-right {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(124, 58, 237, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(100, 255, 218, 0.2);
+      color: var(--accent);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(100, 255, 218, 0.05);
+      border-color: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 60px;
+      align-items: center;
+      margin: 60px 0 80px;
+    }
+
+    .hero-content h1 {
+      font-family: var(--font-display);
+      font-size: 52px;
+      margin: 0 0 12px;
+      line-height: 1.12;
+      background: linear-gradient(135deg, #e6eef8 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -1px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--term-green);
+      letter-spacing: 0.5px;
+      margin: 0 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--term-green);
+      box-shadow: 0 0 10px var(--term-green);
+      display: inline-block;
+      animation: pulse-dot 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      color: var(--muted);
+      margin: 0 0 24px;
+      line-height: 1.6;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .tech-stack {
+      margin-top: 28px;
+    }
+
+    .tech-stack-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .tech {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      font-family: var(--font-mono);
+      background: rgba(255, 255, 255, 0.06);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      border: 1px solid rgba(100, 255, 218, 0.1);
+      color: var(--accent);
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .pill:hover {
+      background: rgba(100, 255, 218, 0.1);
+      border-color: var(--accent);
+    }
+
+    /* Terminal signature widget */
+    .terminal {
+      margin-top: 28px;
+      background: #0a0f18;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      overflow: hidden;
+      max-width: 520px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .terminal-dot:nth-child(1) { background: #ff5f57; }
+    .terminal-dot:nth-child(2) { background: #febc2e; }
+    .terminal-dot:nth-child(3) { background: #28c840; }
+
+    .terminal-title {
+      margin-left: 8px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--muted);
+    }
+
+    .terminal-body {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.9;
+      padding: 16px 18px 20px;
+      color: #c9f6d8;
+      min-height: 128px;
+    }
+
+    .terminal-body .line { color: var(--muted); }
+    .terminal-body .prompt { color: var(--term-green); }
+    .terminal-body .out { color: #e6eef8; }
+    .terminal-cursor {
+      display: inline-block;
+      width: 7px;
+      height: 14px;
+      background: var(--term-green);
+      margin-left: 2px;
+      animation: blink 1s step-end infinite;
+      vertical-align: text-bottom;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .terminal-cursor, .hero-eyebrow::before { animation: none; }
+    }
+
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .profile img {
+      width: 280px;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 2px solid rgba(100, 255, 218, 0.2);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .profile-info {
+      text-align: center;
+      width: 100%;
+    }
+
+    .profile-info h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .profile-info p {
+      margin: 4px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .social-links a, .social-links button {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+      border: 1px solid rgba(100, 255, 218, 0.2);
+      padding: 8px 12px;
+      border-radius: 6px;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .social-links a:hover, .social-links button:hover {
+      background: rgba(100, 255, 218, 0.1);
+      border-color: var(--accent);
+    }
+
+    /* Sections */
+    section {
+      margin: 80px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      margin: 0;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .section-head .muted {
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 24px;
+      border-radius: 12px;
+      transition: all 0.3s;
+    }
+
+    .card:hover {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+      border-color: rgba(100, 255, 218, 0.2);
+      transform: translateY(-4px);
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .card h4 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .proj-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      margin: 12px 0 8px;
+      font-size: 18px;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .card-footer-links {
+      display: flex;
+      gap: 8px;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #7c3aed, #06b6d4);
+      border-radius: 4px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 16px 0 16px 20px;
+      margin-bottom: 16px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -14px;
+      top: 20px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid #7c3aed;
+    }
+
+    .timeline-item strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item .muted {
+      font-size: 14px;
+    }
+
+    /* Contact Form */
+    form {
+      display: grid;
+      gap: 12px;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #e6eef8;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    input, textarea, select {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 12px;
+      border-radius: 8px;
+      color: inherit;
+      font-size: 14px;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.06);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .form-group {
+      display: grid;
+      gap: 4px;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    #formMsg {
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 12px;
+      font-size: 14px;
+      background: rgba(100, 255, 218, 0.1);
+      border: 1px solid rgba(100, 255, 218, 0.2);
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 100px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: rgba(10, 14, 39, 0.8);
+      backdrop-filter: blur(5px);
+      padding: 20px;
+      z-index: 1000;
+    }
+
+    .modal-card {
+      max-width: 600px;
+      width: 100%;
+      border-radius: 12px;
+      padding: 32px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .modal-close {
+      float: right;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 24px;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+    }
+
+    .hidden { display: none !important; }
+    .muted { color: var(--muted); }
+    .center { text-align: center; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin: 40px 0 60px;
+      }
+
+      .profile img {
+        width: 240px;
+        height: 280px;
+      }
+
+      header {
+        flex-wrap: wrap;
+      }
+
+      nav { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        padding: 16px;
+      }
+
+      h1 { font-size: 40px !important; }
+      h2 { font-size: 24px !important; }
+
+      .hero-content h1 {
+        font-size: 36px;
+      }
+
+      .hero-content p {
+        font-size: 16px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .modal-card {
+        padding: 24px;
+      }
+    }
+
+    /* Small enhancements: menu toggle, reveal animations, project thumbnails, skill bars */
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.06);
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .proj-thumb {
+      width: 100%;
+      height: 160px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(124,58,237,0.18), rgba(6,182,212,0.12));
+      display: grid;
+      place-items: center;
+      color: rgba(255,255,255,0.9);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .skill-list { display: grid; gap: 12px; }
+    .skill { font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; align-items: center; }
+    .skill-bar { height: 10px; background: rgba(255,255,255,0.04); border-radius: 999px; overflow: hidden; margin-top: 6px; }
+    .skill-fill { height: 100%; background: linear-gradient(90deg,var(--accent) 0%, #7c3aed 100%); width: 0%; transition: width 900ms cubic-bezier(.2,.9,.2,1); }
+
+    .reveal { opacity: 1; transform: translateY(0); transition: all 600ms cubic-bezier(.2,.9,.2,1); }
+    .hidden-reveal { opacity: 0; transform: translateY(16px); }
+
+    @media (max-width: 1024px) {
+      .menu-toggle { display: inline-block; }
+      nav { display: none; }
+      header.nav-open nav { display: flex; flex-direction: column; gap: 8px; width: 100%; margin-top: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="#home">
+        <div class="logo">RM</div>
+        <div class="brand-text">
+          <h1>Ranbir Mishra</h1>
+          <p>SOC Analyst · Linux Admin</p>
+        </div>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu">☰</button>
+      <div class="header-right">
+        <a class="btn btn-secondary" id="resumeBtn" href="./RANBIR_MISHRA.pdf">Resume</a>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <p class="hero-eyebrow">AVAILABLE FOR OPPORTUNITIES</p>
+        <h1 id="heroName">SOC Analyst &amp; Linux Systems Engineer</h1>
+        <p id="heroTag">MCA graduate specializing in Security Operations, Linux administration and network defense — with hands-on experience in log monitoring, vulnerability assessment, incident investigation and full-stack development.</p>
+
+        <div class="hero-cta">
+          <a class="btn" href="#projects">View My Work</a>
+          <a class="btn btn-secondary" id="contactMe"  href="#contact">Get In Touch</a>
+        </div>
+
+        <div class="terminal" aria-hidden="true">
+          <div class="terminal-bar">
+            <span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span>
+            <span class="terminal-title">ranbir@soc-workstation: ~</span>
+          </div>
+          <div class="terminal-body" id="terminalBody"></div>
+        </div>
+
+        <div class="tech-stack">
+          <div class="tech-stack-label">Core Stack</div>
+          <div class="tech">
+            <span class="pill">Linux / Kali</span>
+            <span class="pill">Nmap</span>
+            <span class="pill">Wireshark</span>
+            <span class="pill">Bash</span>
+            <span class="pill">Python</span>
+            <span class="pill">SQL</span>
+            <span class="pill">React / Node.js</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="profile">
+        <img id="profileImage" src="img.jpg" alt="Profile">
+        <div class="profile-info">
+          <h3 id="profileName">Ranbir Mishra</h3>
+          <p>Based in Panikoili, Jajpur, Odisha</p>
+          <div class="social-links">
+            <a id="githubLink" href="https://github.com/ranbirmishra2004">
+              GitHub</a>
+            <a id="linkedinLink" href="https://www.linkedin.com/in/ranbir-mishra-b5794a294">LinkedIn</a>
+            <a id="copyEmail" href="mailto:ranbirmishra2004@gmail.com">Send Email</a>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-head">
+        <h2>About</h2>
+      </div>
+      <div class="grid" style="grid-template-columns: 2fr 1fr;">
+        <div class="card">
+          <h3>Who I Am</h3>
+          <p id="aboutText">MCA graduate focused on Cybersecurity and Security Operations, with hands-on experience in Linux administration, system and log monitoring, networking, and Bash scripting. Skilled in Linux CLI, TCP/IP, DNS, SSH, user and permission management, SQL, and security fundamentals, built through technical labs, academic projects and industry-oriented cybersecurity training. I'm interested in SOC operations, threat detection, log analysis, incident investigation and network security — and I also build full-stack applications with the MERN stack, so I can work comfortably on both the defensive and development sides of a system.</p>
+          <div style="margin-top: 16px; display: flex; gap: 8px;">
+            <button class="pill" id="contactMe2" style="cursor: pointer;">Let's Talk</button>
+            <a href="#projects" class="pill">See Work</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Quick Facts</h3>
+          <p><strong>Education:</strong> MCA, Dr. Harisingh Gour Central University</p>
+          <p><strong>Availability:</strong> Open to opportunities</p>
+          <p><strong>Location:</strong> Sagar, Madhya Pradesh</p>
+          <p><strong>Focus:</strong> SOC / Cybersecurity, Linux Administration &amp; Full-Stack Development</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-head">
+        <h2>Skills & Expertise</h2>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h4>Cybersecurity</h4>
+          <p>Security Monitoring, Log Analysis, Network Security, Vulnerability Assessment, Incident Response Fundamentals</p>
+        </div>
+        <div class="card">
+          <h4>OS &amp; Linux</h4>
+          <p>Linux, Kali Linux, Windows, Linux CLI, Permissions, User &amp; Group Management, Process Management</p>
+        </div>
+        <div class="card">
+          <h4>Networking</h4>
+          <p>TCP/IP, DNS, SSH, Ports &amp; Protocols, Firewall Fundamentals, Network Troubleshooting</p>
+        </div>
+        <div class="card">
+          <h4>Security Tools</h4>
+          <p>Nmap, Nessus, Wireshark, OWASP ZAP, Metasploit, Burp Suite, hping3</p>
+        </div>
+        <div class="card">
+          <h4>Scripting &amp; Database</h4>
+          <p>Bash, Python, Cron, SQL, MySQL, MongoDB</p>
+        </div>
+        <div class="card">
+          <h4>Full-Stack Development</h4>
+          <p>React.js, Node.js, Express.js, REST APIs, JWT, HTML, CSS, JavaScript, PHP</p>
+        </div>
+        <div class="card hidden-reveal">
+          <h4>Proficiency</h4>
+          <div class="skill-list">
+            <div>
+              <div class="skill">Linux Administration <span>85%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-percent="85"></div></div>
+            </div>
+            <div>
+              <div class="skill">Security Monitoring &amp; Log Analysis <span>78%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-percent="78"></div></div>
+            </div>
+            <div>
+              <div class="skill">Networking (TCP/IP, DNS, SSH) <span>80%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-percent="80"></div></div>
+            </div>
+            <div>
+              <div class="skill">Bash / Python Scripting <span>75%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-percent="75"></div></div>
+            </div>
+            <div>
+              <div class="skill">SQL / MERN Stack <span>72%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-percent="72"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h4>Soft Skills</h4>
+          <p>Analytical Thinking, Problem-Solving, Attention to Detail, Communication, Teamwork, Time Management</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-head">
+        <h2>Featured Projects</h2>
+      </div>
+
+      <div class="grid">
+        <article class="card hidden-reveal">
+          <div class="proj-thumb">Network Security Lab</div>
+          <span class="tag">Security Lab</span>
+          <h3 class="proj-title">Network Security Monitoring &amp; Traffic Analysis Lab</h3>
+          <p>Conducted authorized network reconnaissance and service enumeration with Nmap in an isolated lab, captured and analyzed TCP/IP traffic with Wireshark, and generated controlled test traffic with hping3 to study packet behavior and recognize abnormal traffic patterns. Documented findings and practiced SOC alert analysis and incident reporting.</p>
+          <div class="tech" style="margin-top: 12px;">
+            <span class="pill">Nmap</span>
+            <span class="pill">Wireshark</span>
+            <span class="pill">hping3</span>
+            <span class="pill">Kali Linux</span>
+          </div>
+          <div class="card-footer">
+            <span class="muted">Personal Lab</span>
+            <div class="card-footer-links">
+              <button class="pill" onclick="openProject(event,'Network Security Monitoring & Traffic Analysis Lab','Conducted authorized network reconnaissance and service enumeration with Nmap in an isolated lab, captured and analyzed TCP/IP traffic with Wireshark, and generated controlled test traffic with hping3 to study packet behavior and recognize abnormal traffic patterns. Documented findings and practiced SOC alert analysis, network investigation, and incident reporting.')">Details</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card hidden-reveal">
+          <div class="proj-thumb">Linux Security Lab</div>
+          <span class="tag">Security Lab</span>
+          <h3 class="proj-title">Linux System Administration &amp; Security Lab</h3>
+          <p>Managed users, permissions, processes and services across Linux environments. Monitored system logs and services with journalctl and systemctl to troubleshoot operational and security-related issues, and automated routine administration tasks using Bash and Cron.</p>
+          <div class="tech" style="margin-top: 12px;">
+            <span class="pill">Linux</span>
+            <span class="pill">Bash</span>
+            <span class="pill">systemctl</span>
+            <span class="pill">journalctl</span>
+            <span class="pill">Cron</span>
+          </div>
+          <div class="card-footer">
+            <span class="muted">Personal Lab</span>
+            <div class="card-footer-links">
+              <button class="pill" onclick="openProject(event,'Linux System Administration & Security Lab','Managed users, permissions, processes, and services in Linux environments. Monitored system logs and services to troubleshoot operational and security-related issues. Automated routine administration tasks using Bash and Cron.')">Details</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card hidden-reveal">
+          <div class="proj-thumb">Myntra Clone</div>
+          <span class="tag">Full-Stack · MERN</span>
+          <h3 class="proj-title">Myntra E-Commerce Clone</h3>
+          <p>Full-stack fashion e-commerce application inspired by Myntra, with a responsive React frontend and a Node.js/Express backend backed by MongoDB. Implemented JWT authentication, product browsing, wishlist, cart, address management, and order/checkout workflows through RESTful APIs.</p>
+          <div class="tech" style="margin-top: 12px;">
+            <span class="pill">React.js</span>
+            <span class="pill">Node.js</span>
+            <span class="pill">Express.js</span>
+            <span class="pill">MongoDB</span>
+            <span class="pill">JWT</span>
+          </div>
+          <div class="card-footer">
+            <span class="muted">MERN Stack</span>
+            <div class="card-footer-links">
+              <a class="pill" href="https://visionary-cocada-21808e.netlify.app/" target="_blank" rel="noopener">Live Demo</a>
+              <button class="pill" onclick="openProject(event,'Myntra E-Commerce Clone','Developed a full-stack fashion e-commerce application inspired by Myntra using the MERN stack, integrating a responsive React frontend with a Node.js/Express backend and MongoDB database. Implemented user authentication and authorization using JWT, product browsing, category navigation, wishlist, shopping cart, address management, and order/checkout workflows via RESTful APIs.')">Details</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-head">
+        <h2>Experience</h2>
+      </div>
+      <div class="timeline" style="margin-top: 20px;">
+        <div class="timeline-item">
+          <strong>Dec 2025 — Feb 2026</strong>
+          <p class="muted">Full Stack Web Development Internship — ElevanceSkills. Hands-on experience in application development, troubleshooting, testing, and technical problem-solving.</p>
+        </div>
+        <div class="timeline-item">
+          <strong>3 Months</strong>
+          <p class="muted">Cybersecurity Training &amp; Practical Labs — network reconnaissance, vulnerability assessment, web security testing, traffic analysis, log monitoring, and Linux security in controlled lab environments using Nmap, Nessus, Burp Suite, OWASP ZAP, Metasploit, Netcat, Wireshark, hping3 and Kali Linux.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="section-head">
+        <h2>Education</h2>
+      </div>
+      <div class="timeline" style="margin-top: 20px;">
+        <div class="timeline-item">
+          <strong>2024 — 2026</strong>
+          <p class="muted">Master of Computer Applications (MCA) — Dr. Harisingh Gour Central University, Sagar, Madhya Pradesh · 8.67 CGPA</p>
+        </div>
+        <div class="timeline-item">
+          <strong>2021 — 2024</strong>
+          <p class="muted">Bachelor of Science in Computer Science — Utkal University, Bhubaneswar, Odisha · 81.72% · 8.4 CGPA</p>
+        </div>
+        <div class="timeline-item">
+          <strong>2019 — 2021</strong>
+          <p class="muted">Higher Secondary Education (+2 Science) — Fakir Mohan Higher Secondary School, Balasore, Odisha · 85%</p>
+        </div>
+        <div class="timeline-item">
+          <strong>2019</strong>
+          <p class="muted">Matriculation (Class 10) — Saraswati Sishu Vidya Mandir, Jajpur, Odisha · 84.50%</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
+      <div class="section-head">
+        <h2>Certifications &amp; Achievements</h2>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h4>Certifications &amp; Training</h4>
+          <div class="skill-list">
+            <p class="muted">Cybersecurity Fundamentals — IBM SkillsBuild</p>
+            <p class="muted">Introduction to Cybersecurity — Cisco Networking Academy</p>
+            <p class="muted">Cybersecurity Analyst Job Simulation — Deloitte, Forage</p>
+            <p class="muted">Data Analytics Job Simulation — Tata, Forage</p>
+            <p class="muted">UNXT Soft Skill Foundation — Infosys Foundation, SGBS Unnati (165 Hours)</p>
+            <p class="muted">Power BI Certification — Office Master</p>
+            <p class="muted">Front-End Development Certification — Simplilearn</p>
+          </div>
+        </div>
+        <div class="card">
+          <h4>Achievements</h4>
+          <div class="skill-list">
+            <p class="muted">Selected for IDEATHON — Smart India Hackathon 2025 (Internal Round); collaborated with a cross-functional team on the "Discover Delight" project.</p>
+            <p class="muted">Completed a Full Stack Web Development Internship at ElevanceSkills, gaining hands-on experience in application development and technical problem-solving.</p>
+            <p class="muted">Completed industry-oriented cybersecurity training and job simulations, strengthening practical knowledge in security monitoring, network security and vulnerability assessment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-head">
+        <h2>Get In Touch</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 28px; margin-top: 20px; align-items: start;">
+        <div class="card">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="cname">Name</label>
+              <input id="cname" type="text" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="cemail">Email</label>
+              <input id="cemail" type="email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="cmsg">Message</label>
+              <textarea id="cmsg" rows="5" placeholder="Tell me about your project..." required></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn">Send Message</button>
+              <button type="button" id="clearForm" class="btn btn-secondary">Clear</button>
+            </div>
+            <div id="formMsg"></div>
+          </form>
+        </div>
+
+        <div>
+          <div class="card">
+            <h3>Contact Info</h3>
+            <p><strong>Email</strong></p>
+            <p class="muted" id="emailDisplay">ranbirmishra2004@gmail.com</p>
+            <p style="margin-top: 16px;"><strong>Phone</strong></p>
+            <p class="muted">+91 7205873191</p>
+            <p style="margin-top: 16px;"><strong>Location</strong></p>
+            <p class="muted">Panikoili, Jajpur, Odisha</p>
+          </div>
+          <div class="card" style="margin-top: 16px;">
+            <h3>Availability</h3>
+            <p class="muted">Open to remote and hybrid positions. Available for freelance or full-time opportunities.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="footerYear"></span> Ranbir Mishra. All rights reserved.</div>
+      <div><a href="https://github.com/ranbirmishra2004">GitHub</a> • <a href="https://www.linkedin.com/in/ranbir-mishra-b5794a294">LinkedIn</a></div>
+    </footer>
+  </div>
+
+  <!-- Project Modal -->
+  <div id="projModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="modal-close" id="closeModal" aria-label="Close modal">✕</button>
+      <h3 id="modalTitle" style="margin-top: 0;">Project Details</h3>
+      <p id="modalDesc" class="muted" style="margin-bottom: 20px;">Project description goes here.</p>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <a id="modalLive" class="btn" href="#">View Live</a>
+        <a id="modalRepo" class="pill" href="#">View Code</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const DATA = {
+      name: 'Ranbir Mishra',
+      tagline: 'MCA graduate specializing in Security Operations, Linux administration and network defense — with hands-on experience in log monitoring, vulnerability assessment, incident investigation and full-stack development.',
+      bio: "MCA graduate focused on Cybersecurity and Security Operations, with hands-on experience in Linux administration, system and log monitoring, networking, and Bash scripting. Skilled in Linux CLI, TCP/IP, DNS, SSH, user and permission management, SQL, and security fundamentals, built through technical labs, academic projects and industry-oriented cybersecurity training. I'm interested in SOC operations, threat detection, log analysis, incident investigation and network security — and I also build full-stack applications with the MERN stack, so I can work comfortably on both the defensive and development sides of a system.",
+      profileImage: 'img.jpg',
+      email: 'ranbirmishra2004@gmail.com',
+      github: 'https://github.com/ranbirmishra2004',
+      linkedin: 'https://www.linkedin.com/in/ranbir-mishra-b5794a294',
+      resume: 'RANBIR_MISHRA.pdf',
+    };
+
+    // Apply data
+    document.getElementById('profileImage').src = DATA.profileImage;
+    document.getElementById('heroTag').textContent = DATA.tagline;
+    document.getElementById('aboutText').textContent = DATA.bio;
+    document.getElementById('profileName').textContent = DATA.name;
+    document.getElementById('emailDisplay').textContent = DATA.email;
+    document.getElementById('githubLink').href = DATA.github;
+    document.getElementById('linkedinLink').href = DATA.linkedin;
+    document.getElementById('resumeBtn').href = DATA.resume;
+    document.querySelector('.brand-text h1').textContent = DATA.name;
+    document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+    // Terminal signature widget: type out SOC-flavored command lines
+    (function () {
+      const body = document.getElementById('terminalBody');
+      if (!body) return;
+      const lines = [
+        { type: 'cmd', text: 'tail -f /var/log/auth.log' },
+        { type: 'out', text: 'Monitoring authentication events…' },
+        { type: 'cmd', text: 'nmap -sV -T4 10.0.0.0/24' },
+        { type: 'out', text: '24 hosts scanned · 0 unexpected open ports' },
+        { type: 'cmd', text: 'whoami' },
+        { type: 'out', text: 'ranbir · SOC Analyst / Linux Admin' },
+      ];
+      let li = 0, ci = 0;
+      const cursor = '<span class="terminal-cursor"></span>';
+
+      function renderStatic() {
+        let html = '';
+        for (let i = 0; i < li; i++) {
+          const l = lines[i];
+          html += l.type === 'cmd'
+            ? '<div class="line"><span class="prompt">$</span> ' + l.text + '</div>'
+            : '<div class="line out">' + l.text + '</div>';
+        }
+        return html;
+      }
+
+      function typeStep() {
+        if (li >= lines.length) { li = 0; ci = 0; body.innerHTML = ''; setTimeout(typeStep, 900); return; }
+        const l = lines[li];
+        const done = ci >= l.text.length;
+        const prefix = l.type === 'cmd' ? '<span class="prompt">$</span> ' : '';
+        const cls = l.type === 'cmd' ? 'line' : 'line out';
+        const partial = '<div class="' + cls + '">' + prefix + l.text.slice(0, ci) + (done ? '' : cursor) + '</div>';
+        body.innerHTML = renderStatic() + partial;
+        if (done) {
+          li++; ci = 0;
+          setTimeout(typeStep, l.type === 'cmd' ? 500 : 700);
+        } else {
+          ci++;
+          setTimeout(typeStep, l.type === 'cmd' ? 45 : 18);
+        }
+      }
+      typeStep();
+    })();
+
+    // Modal functions
+    function openProject(e, title, desc) {
+      e.stopPropagation();
+      document.getElementById('projModal').classList.remove('hidden');
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalDesc').textContent = desc;
+    }
+
+    document.getElementById('closeModal').addEventListener('click', () => {
+      document.getElementById('projModal').classList.add('hidden');
+    });
+
+    document.getElementById('projModal').addEventListener('click', (ev) => {
+      if (ev.target === document.getElementById('projModal')) {
+        document.getElementById('projModal').classList.add('hidden');
+      }
+    });
+
+    // Contact form
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      const name = document.getElementById('cname').value.trim();
+      const email = document.getElementById('cemail').value.trim();
+      const msg = document.getElementById('cmsg').value.trim();
+      
+      if (!name || !email || !msg) {
+        document.getElementById('formMsg').textContent = 'Please fill in all fields.';
+        return;
+      }
+
+      document.getElementById('formMsg').textContent = "✓ Message received! I'll get back to you soon.";
+      form.reset();
+      setTimeout(() => {
+        document.getElementById('formMsg').textContent = '';
+      }, 5000);
+    });
+
+    document.getElementById('clearForm').addEventListener('click', () => {
+      form.reset();
+      document.getElementById('formMsg').textContent = '';
+    });
+
+    // Copy email
+    document.getElementById('copyEmail').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(DATA.email);
+        const btn = document.getElementById('copyEmail');
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = orig; }, 2000);
+      } catch (e) {
+        alert('Could not copy email.');
+      }
+    });
+
+    // Contact button scroll
+    document.getElementById('contactMe').addEventListener('click', () => {
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.getElementById('contactMe2').addEventListener('click', () => {
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Smooth scroll for nav
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        if (href.startsWith('#') && href !== '#') {
+          e.preventDefault();
+          const el = document.querySelector(href);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Close modal on Escape
+    document.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Escape') {
+        document.getElementById('projModal').classList.add('hidden');
+      }
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    menuToggle && menuToggle.addEventListener('click', () => {
+      document.querySelector('header').classList.toggle('nav-open');
+    });
+
+    // Reveal on scroll using IntersectionObserver
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal');
+          entry.target.classList.remove('hidden-reveal');
+          // animate skill bars when skills card revealed
+          entry.target.querySelectorAll && entry.target.querySelectorAll('.skill-fill').forEach(el => {
+            const pct = el.getAttribute('data-percent') || '0';
+            el.style.width = pct + '%';
+          });
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    // Add hidden-reveal class to card-like elements and observe them
+    document.querySelectorAll('.card, .hero, .profile, .timeline-item, .proj-thumb, .section-head').forEach(el => {
+      if (!el.classList.contains('hidden-reveal')) el.classList.add('hidden-reveal');
+      io.observe(el);
+    });
+
+    // Small accessibility: focus outlines for keyboard users
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Tab') document.body.classList.add('show-focus');
+    });
+  </script>
+</body>
+</html>
