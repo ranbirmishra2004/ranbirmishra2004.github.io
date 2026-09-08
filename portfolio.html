@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ranbir Mishra — SOC Analyst &amp; Linux Systems Engineer</title>
   <meta name="description" content="Portfolio of Ranbir Mishra — MCA graduate specializing in Cybersecurity, SOC Operations, Linux Administration and Full-Stack Development." />
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  <link rel="icon" type="image/png" href="image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -213,6 +213,33 @@
       gap: 12px;
       margin-bottom: 32px;
       flex-wrap: wrap;
+    }
+
+    .stats-row {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .tech-stack {
@@ -670,6 +697,14 @@
         grid-template-columns: 1fr;
       }
 
+      .stats-row {
+        gap: 18px;
+      }
+
+      .stat-num {
+        font-size: 20px;
+      }
+
       .card-footer {
         flex-direction: column;
         align-items: flex-start;
@@ -738,7 +773,7 @@
       </nav>
       <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu">☰</button>
       <div class="header-right">
-        <a class="btn btn-secondary" id="resumeBtn" href="./RANBIR_MISHRA.pdf" download>Resume</a>
+        <a class="btn btn-secondary" id="resumeBtn" href="./Cyber_analyst.pdf" download>Resume</a>
       </div>
     </header>
 
@@ -752,6 +787,14 @@
         <div class="hero-cta">
           <a class="btn" href="#projects">View My Work</a>
           <a class="btn btn-secondary" id="contactMe"  href="#contact">Get In Touch</a>
+          <a class="btn btn-secondary" href="./Cyber_analyst.pdf" download>Download Resume</a>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat"><span class="stat-num">8.6</span><span class="stat-label">MCA CGPA</span></div>
+          <div class="stat"><span class="stat-num">5+</span><span class="stat-label">Certifications</span></div>
+          <div class="stat"><span class="stat-num">3</span><span class="stat-label">Hands-on Labs &amp; Projects</span></div>
+          <div class="stat"><span class="stat-num">3</span><span class="stat-label">Languages Spoken</span></div>
         </div>
 
         <div class="terminal" aria-hidden="true">
@@ -777,7 +820,7 @@
       </div>
 
       <aside class="profile">
-        <img id="profileImage" src="img.jpg" alt="Profile">
+        <img id="profileImage" src="image.png" alt="Ranbir Mishra">
         <div class="profile-info">
           <h3 id="profileName">Ranbir Mishra</h3>
           <p>Based in Panikoili, Jajpur, Odisha</p>
@@ -807,10 +850,12 @@
         </div>
         <div class="card">
           <h3>Quick Facts</h3>
-          <p><strong>Education:</strong> MCA, Dr. Harisingh Gour Central University</p>
-          <p><strong>Availability:</strong> Open to opportunities</p>
-          <p><strong>Location:</strong> Sagar, Madhya Pradesh</p>
+          <p><strong>Education:</strong> MCA, Dr. Harisingh Gour Central University, Sagar</p>
+          <p><strong>Availability:</strong> Open to full-time &amp; freelance opportunities</p>
+          <p><strong>Home Town:</strong> Panikoili, Jajpur, Odisha</p>
+          <p><strong>Currently Based In:</strong> Sagar, Madhya Pradesh</p>
           <p><strong>Focus:</strong> SOC / Cybersecurity, Linux Administration &amp; Full-Stack Development</p>
+          <p><strong>Languages:</strong> English (Proficient), Hindi (Fluent), Odia (Native)</p>
         </div>
       </div>
     </section>
@@ -873,6 +918,14 @@
         <div class="card">
           <h4>Soft Skills</h4>
           <p>Analytical Thinking, Problem-Solving, Attention to Detail, Communication, Teamwork, Time Management</p>
+        </div>
+        <div class="card">
+          <h4>Languages</h4>
+          <p>English (Proficient), Hindi (Fluent), Odia (Native)</p>
+        </div>
+        <div class="card">
+          <h4>Tools &amp; Platforms</h4>
+          <p>Git &amp; GitHub, VS Code, NetBeans, MySQL Workbench, XAMPP, Power BI, Tableau, MS Excel</p>
         </div>
       </div>
     </section>
@@ -1088,11 +1141,11 @@
       name: 'Ranbir Mishra',
       tagline: 'MCA graduate specializing in Security Operations, Linux administration and network defense — with hands-on experience in log monitoring, vulnerability assessment, incident investigation and full-stack development.',
       bio: "MCA graduate focused on Cybersecurity and Security Operations, with hands-on experience in Linux administration, system and log monitoring, networking, and Bash scripting. Skilled in Linux CLI, TCP/IP, DNS, SSH, user and permission management, SQL, and security fundamentals, built through technical labs, academic projects and industry-oriented cybersecurity training. I'm interested in SOC operations, threat detection, log analysis, incident investigation and network security — and I also build full-stack applications with the MERN stack, so I can work comfortably on both the defensive and development sides of a system.",
-      profileImage: 'img.jpg',
+      profileImage: 'image.png',
       email: 'ranbirmishra2004@gmail.com',
       github: 'https://github.com/ranbirmishra2004',
       linkedin: 'https://www.linkedin.com/in/ranbir-mishra-b5794a294',
-      resume: 'RANBIR_MISHRA.pdf',
+      resume: 'Cyber_analyst.pdf',
     };
 
     // Apply data
